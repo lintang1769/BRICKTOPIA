@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRICKTOPIA - Nano Bricks Karakter Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* BASE & TYPOGRAPHY */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #1a1a1a;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        h2 {
+            text-align: center;
+            font-size: 28px;
+            margin: 40px 0 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* HEADER / NAVBAR */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            border-bottom: 1px solid #ddd;
+            background-color: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .icons span {
+            margin-left: 20px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .menu-toggle { display: none; } 
+
+        /* HERO SECTION */
+        .hero-section {
+            background: #ffffff; 
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            text-align: left;
+            padding: 0 5%;
+            border-bottom: 1px solid #eee;
+        }
+        .hero-text {
+            max-width: 45%;
+        }
+        .hero-text h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+        .hero-text p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            font-weight: 400;
+            color: #555;
+        }
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: contain;
+        }
+        .shop-now-btn {
+            padding: 12px 30px;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            border: 2px solid #1a1a1a;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: background-color 0.3s, opacity 0.3s;
+        }
+        .shop-now-btn:hover {
+            opacity: 0.8;
+        }
+
+        /* CATEGORY HIGHLIGHT */
+        .category-highlight {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 40px 5%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .category-card {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            cursor: pointer;
+        }
+        .category-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s;
+        }
+        .category-card:hover img {
+            transform: scale(1.05);
+        }
+        .category-overlay {
+            padding: 15px 0;
+            font-weight: 600;
+            text-transform: uppercase;
+            background-color: #ffffff;
+            border-top: 1px solid #eee;
+        }
+
+        /* PRODUCT GRID */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 30px 5%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .product-card {
+            background-color: #ffffff;
+            border: 1px solid #eee;
+            text-align: left;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+            cursor: pointer;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        .product-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+        .product-info {
+            padding: 15px;
+        }
+        .product-category {
+            font-size: 11px;
+            color: #888;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        .product-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0 0 5px 0;
+        }
+        .product-price {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            border: none;
+            text-transform: uppercase;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .add-to-cart-btn:hover {
+            background-color: #444;
+        }
+        
+        /* TENTANG KAMI SECTION */
+        #tentang {
+            background-color: #ffffff;
+            padding: 50px 5%;
+            text-align: center;
+            margin-top: 40px;
+        }
+        #tentang p {
+            max-width: 800px;
+            margin: 20px auto;
+            font-size: 15px;
+            color: #555;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid #ddd;
+            margin-top: 50px;
+            background-color: #1a1a1a;
+            color: #ccc;
+            font-size: 13px;
+        }
+        footer p { margin: 5px 0; }
+        .social-links a {
+            margin: 0 10px;
+            font-weight: 400;
+            color: #ffffff;
+        }
+        .social-links { margin-top: 15px; }
+
+        /* MEDIA QUERIES (RESPONSIVE DESIGN) */
+        @media (max-width: 768px) {
+            header { padding: 15px 20px; }
+            nav { display: none; } 
+            .menu-toggle { display: block; font-size: 24px; cursor: pointer; }
+            
+            .hero-section { 
+                flex-direction: column; 
+                height: auto; 
+                text-align: center;
+                padding-top: 30px;
+            }
+            .hero-text { max-width: 100%; order: 2; padding-bottom: 30px; }
+            .hero-image { order: 1; }
+            .hero-image img { max-height: 250px; margin-bottom: 20px;}
+            .hero-text h1 { font-size: 28px; }
+            
+            .category-highlight {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .product-grid {
+                grid-template-columns: 1fr 1fr; 
+            }
+            .product-image { height: 200px; }
+        }
+        @media (max-width: 480px) {
+            .product-grid {
+                grid-template-columns: 1fr; 
+            }
+            .category-card img { height: 150px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">BRICKTOPIA</div>
+        
+        <nav id="mobile-menu">
+            <ul>
+                <li><a href="#koleksi">Koleksi</a></li>
+                <li><a href="#kategori">Kategori</a></li>
+                <li><a href="#terbaru">Terlaris</a></li>
+                <li><a href="#tentang">Tentang Kami</a></li>
+            </ul>
+        </nav>
+        
+        <div class="header-mobile">
+            <div class="icons">
+                <span class="search-icon" onclick="showSearchAlert()">🔍</span>
+                <span class="cart-icon" onclick="showCartAlert()">🛒</span>
+            </div>
+            <span class="menu-toggle">☰</span> 
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-text">
+            <h1>Miniatur Karakter Favorit</h1>
+            <p>Rakit duniamu! Koleksi Nano Bricks dengan detail terbaik. Mulai dari pahlawan hingga tokoh kartun lucu.</p>
+            <a href="#koleksi" class="shop-now-btn">Lihat Semua Bricks</a>
+        </div>
+        <div class="hero-image">
+            <img src="https://blog.alfagift.id/wp-content/uploads/2024/10/brcks.jpg" alt="Nano Bricks Karakter">
+        </div>
+    </section>
+
+    <section id="kategori">
+        <h2>Pilih Dunia Anda</h2>
+        <div class="category-highlight">
+            <div class="category-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXlYv4Za7selprHI1iQKUN-GgM_Dfup8lDhw&s" alt="Kategori Anime">
+                <div class="category-overlay">Anime & Manga</div>
+            </div>
+            <div class="category-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjb25tiXtaZS4M660mME3tFvzIvNeo3O9JfQ&s" alt="Kategori Game">
+                <div class="category-overlay">Gaming & Retro</div>
+            </div>
+            <div class="category-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7rhQaIaYrm4R_AVilWlrOBkJAKPLsyl5_6w&s" alt="Kategori Hewan Lucu">
+                <div class="category-overlay">Hewan & Cute Stuff</div>
+            </div>
+        </div>
+    </section>
+
+    <main class="product-grid" id="koleksi">
+       
+        <div class="product-card">
+            <img src="https://image1.ome.sh/QmR4BJ9tQFm2TuhT64j8ea8bbH69magtmpUN5Eh7s17Y4Z" alt="Nano Bricks Pikachu" class="product-image">
+            <div class="product-info">
+                <p class="product-category">Gaming</p>
+                <h3 class="product-name">Pikachu Set Nano Block</h3>
+                <p class="product-price">Rp 65.000</p>
+                <button class="add-to-cart-btn" onclick="orderProduct('Pikachu Set Nano Block', 'Rp 65.000')">Pesan Sekarang</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="https://upload.jaknot.com/2024/01/images/products/862b3b/original/bricks-mainan-balok-susun-karakter-mario-lego-figure-162pcs-w2601-37.jpg" alt="Nano Bricks Mario" class="product-image">
+            <div class="product-info">
+                <p class="product-category">Gaming</p>
+                <h3 class="product-name">Super Mario Klasik</h3>
+                <p class="product-price">Rp 75.000</p>
+                <button class="add-to-cart-btn" onclick="orderProduct('Super Mario Klasik', 'Rp 75.000')">Pesan Sekarang</button>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://nanofunstore.com/wp-content/uploads/W2601-23-2-600x600.jpg" alt="Nano Bricks Sailor Moon" class="product-image">
+            <div class="product-info">
+                <p class="product-category">Anime</p>
+                <h3 class="product-name">Sailor Scout Mini</h3>
+                <p class="product-price">Rp 59.000</p>
+                <button class="add-to-cart-btn" onclick="orderProduct('Sailor Scout Mini', 'Rp 59.000')">Pesan Sekarang</button>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7qul6-lgxcaf3dpyhmf5" alt="Nano Bricks Spongebob" class="product-image">
+            <div class="product-info">
+                <p class="product-category">Kartun</p>
+                <h3 class="product-name">Spongebob SquarePants</h3>
+                <p class="product-price">Rp 60.000</p>
+                <button class="add-to-cart-btn" onclick="orderProduct('Spongebob SquarePants', 'Rp 60.000')">Pesan Sekarang</button>
+            </div>
+        </div>
+
+    </main>
+    
+    <section class="product-grid" id="terbaru">
+       
+        <div class="product-card">
+            <img src="https://upload.jaknot.com/2024/01/images/products/d61470/original/bricks-mainan-balok-susun-karakter-hello-kitty-lego-figure-146pcs-w2601-17.jpg" alt="Nano Bricks Hello Kitty" class="product-image">
+            <div class="product-info">
+                <p class="product-category">Cute Stuff</p>
+                <h3 class="product-name">Hello Kitty Dress</h3>
+                <p class="product-price">Rp 55.000</p>
+                <button class="add-to-cart-btn" onclick="orderProduct('Hello Kitty Dress', 'Rp 55.000')">Pesan Sekarang</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="https://i.ebayimg.com/images/g/q4QAAOSwrGxm1HQF/s-l400.jpg" alt="Nano Bricks Patrik" class="product-image">
+            <div class="product-info">
+                <p class="product-category">Kartun</p>
+                <h3 class="product-name">Patrik Star</h3>
+                <p class="product-price">Rp 49.000</p>
+                <button class="add-to-cart-btn" onclick="orderProduct('Patrik Bintang', 'Rp 49.000')">Pesan Sekarang</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/catalog-image/112/MTA-163758919/bricks_bricks-mainan-balok-susun-karakter-cinnamoroll-lego-figure-144pcs_full04.jpg" alt="Nano Bricks Cinnamoroll" class="product-image">
+            <div class="product-info">
+                <p class="product-category">Cute Stuff</p>
+                <h3 class="product-name">Cinnamoroll Lucu</h3>
+                <p class="product-price">Rp 70.000</p>
+                <button class="add-to-cart-btn" onclick="orderProduct('Cinnamoroll Lucu', 'Rp 70.000')">Pesan Sekarang</button>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://kyotomerch.com/wp-content/uploads/2025/04/H0dd1f7ae4aad4e7293a89867c06bd934E.png" alt="Nano Bricks My Kuro" class="product-image">
+            <div class="product-info">
+                <p class="product-category">Anime</p>
+                <h3 class="product-name">Itachi Uciha</h3>
+                <p class="product-price">Rp 68.000</p>
+                <button class="add-to-cart-btn" onclick="orderProduct('My Kuro Gemoy', 'Rp 68.000')">Pesan Sekarang</button>
+            </div>
+        </div>
+    </section>
+    
+    <section id="tentang">
+        <h2>Tentang BRICKTOPIA</h2>
+        <p>Kami menyediakan koleksi lengkap Nano Bricks bertema karakter, cocok untuk kolektor dan penggemar miniatur. Kualitas bahan premium dan detail rakitan yang presisi menjamin hasil akhir yang memuaskan. Mulailah hobi merakit Anda sekarang!</p>
+        <p style="font-weight: 600;">Kepuasan Anda adalah prioritas kami. Semua pemesanan diproses dengan cepat via WhatsApp.</p>
+    </section>
+
+
+    <footer>
+        <p>
+            Pemesanan Cepat via WhatsApp (24 Jam): <br>
+            <a href="https://wa.me/6289653834889" style="color: #4CAF50; font-weight: 700;">089653834889</a>
+        </p>
+        <p>&copy; 2025 BRICKTOPIA. All Rights Reserved.</p>
+        <div class="social-links">
+            <a href="#tentang">Bantuan</a> | 
+            <a href="#koleksi">Kebijakan Pengiriman</a> | 
+            <a href="#tentang">FAQ</a>
+        </div>
+    </footer>
+
+    <script>
+        // Nomor WhatsApp Tujuan Anda
+        const whatsappNumber = "6289653834889"; 
+
+        // 1. Fungsi untuk membuat link WhatsApp saat tombol "Pesan Sekarang" diklik
+        function orderProduct(productName, productPrice) {
+            const message = `Halo BRICKTOPIA, saya tertarik untuk membeli set bricks: *${productName}* (${productPrice}). Mohon info total harga dan cara pembayarannya. Terima kasih.`;
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+            alert(`Anda akan diarahkan ke WhatsApp untuk memesan set: ${productName}.`);
+        }
+        
+        // 2. Fungsi untuk Menu Pencarian (Fitur Baru)
+        function showSearchAlert() {
+            alert("Fitur Pencarian sedang dikembangkan! Sementara ini, silakan telusuri koleksi di bawah.");
+        }
+
+        // 3. Fungsi untuk Menu Keranjang (Fitur Baru)
+        function showCartAlert() {
+            alert("Keranjang Belanja masih dalam tahap pengembangan. Untuk pemesanan, silakan gunakan tombol 'Pesan Sekarang' di bawah produk untuk WhatsApp.");
+        }
+
+        // 4. Fungsionalitas Menu Mobile (Toggle)
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            const nav = document.querySelector('nav');
+            const isHidden = nav.style.display === 'none' || nav.style.display === '';
+
+            if (isHidden) {
+                // Tampilkan menu
+                nav.style.display = 'flex';
+                nav.style.flexDirection = 'column';
+                nav.style.position = 'absolute';
+                nav.style.top = '65px'; 
+                nav.style.left = '0';
+                nav.style.width = '100%';
+                nav.style.backgroundColor = '#ffffff';
+                nav.style.padding = '10px 0';
+                nav.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.display = 'none';
+            }
+        });
+        
+        // 5. Sembunyikan menu mobile setelah link diklik
+        document.querySelectorAll('nav a').forEach(item => {
+            item.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    document.querySelector('nav').style.display = 'none';
+                }
+            });
+        });
+        
+    </script>
+</body>
+</html>
